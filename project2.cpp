@@ -32,9 +32,9 @@ void View_Members(fstream &, char filename[]);
 int main()
 {
     fstream file;
-    char again,enter;
+    char again, enter;
     int menu_no;
-    
+
     char file_name[SIZE] = "Inventory_items_data.txt";
     do
     {
@@ -46,7 +46,7 @@ int main()
         cout << "Press 5 to Assign items" << endl;
         cout << "Press 6 to Retrieve items" << endl;
         cout << "Press 7 to View Members" << endl;
-         cout << "Press 8 to Delete Members" << endl;
+        cout << "Press 8 to Delete Members" << endl;
         cout << "Press 0 to exit the Program" << endl;
         cin >> menu_no;
         cin.ignore();
@@ -62,48 +62,46 @@ int main()
         {
             do
             {
-            SearchItems(file, file_name);
-            cout<<"Do you want to search again?";
-            cin.get(again);
-            } while (again=='y'||again=='Y');
-            
-            
+                SearchItems(file, file_name);
+                cout << "Do you want to search again?";
+                cin.get(again);
+            } while (again == 'y' || again == 'Y');
         }
         else if (menu_no == 4)
         {
             do
             {
-            UpdateItems(file, file_name);
-            cout<<"Do you want to update again?";
-            cin.get(again);
-            } while (again=='y'||again=='Y');
+                UpdateItems(file, file_name);
+                cout << "Do you want to update again?";
+                cin.get(again);
+            } while (again == 'y' || again == 'Y');
         }
         else if (menu_no == 5)
         {
 
-             do
-            {
-            Allocate_to(file, file_name);
-            cout<<"Do you want to assign again?"<<endl;
-            cin.get(again);
-            cin.ignore();
-            } while (again=='y'||again=='Y');
-        }
-        else if (menu_no == 6)
-        { 
             do
             {
-            Retrieve(file, file_name);
-            cout<<"Do you want to retrieve again?";
-            cin.get(again);
-            } while (again=='y'||again=='Y');
+                Allocate_to(file, file_name);
+                cout << "Do you want to assign again?" << endl;
+                cin.get(again);
+                cin.ignore();
+            } while (again == 'y' || again == 'Y');
+        }
+        else if (menu_no == 6)
+        {
+            do
+            {
+                Retrieve(file, file_name);
+                cout << "Do you want to retrieve again?";
+                cin.get(again);
+            } while (again == 'y' || again == 'Y');
             Retrieve(file, file_name);
         }
         else if (menu_no == 7)
         {
             View_Members(file, file_name);
         }
-         else if (menu_no == 8)
+        else if (menu_no == 8)
         {
             DeleteItems(file, file_name);
         }
@@ -115,12 +113,11 @@ int main()
         {
             cout << "Invalid number" << endl;
         }
-        cout<<"\nPress Enter to Continue"<<endl;
+        cout << "\nPress Enter to Continue" << endl;
         cin.get(enter);
         // cin.ignore();
     } while (1);
 
-   
     return 0;
 }
 //-------------------------------ADD Functions--------------------->
@@ -172,26 +169,13 @@ void ViewItems(fstream &filex, char filename[])
         cout << "Here are the items in the Inventory" << endl;
 
         filex.read(reinterpret_cast<char *>(&items), sizeof(items));
-        cout<<left<<setw(12)<<"NAME"<<setw(10)<<"ID"<<setw(13)<<"Category"<<setw(14)<<"item-Count"<<endl;
+        cout << left << setw(12) << "NAME" << setw(10) << "ID" << setw(13) << "Category" << setw(14) << "item-Count" << endl;
         while (!filex.eof())
         {
 
- cout<<left<<setw(12)<<items.name<<setw(10)<<items.item_ID<<setw(13)
- <<items.category<<setw(14)<<items.item_count<<endl;
-            // cout << "\nName of item: " << items.name << endl;
-            // cout << "The item ID is: " << items.item_ID << endl;
-            // cout << "The item category is: " << items.category << endl;
-            // cout << "The item count is: " << items.item_count << endl;
-            // cout << "the number of people allocated to : " << items.people_count << endl;
-            // cout << "list the people allocated to { ";
-            // for (int i = 0; i < items.people_count + 1; i++)
-            // {
-            //     cout << items.Allocated_to[i] << ", ";
-            // }
-            // cout << "}." << endl;
-            // cout << "Press the Enter key to see the next record" << endl;
-            // cin.get(next);
-           
+            cout << left << setw(12) << items.name << setw(10) << items.item_ID << setw(13)
+                 << items.category << setw(14) << items.item_count << endl;
+
             filex.read(reinterpret_cast<char *>(&items), sizeof(items));
         }
         cout << "That's All the items in inventory";
@@ -381,12 +365,12 @@ void Allocate_to(fstream &filex, char filename[])
 
         while (!filex.eof())
         {
-            if (strcmp(name, items.name)== 0)
+            if (strcmp(name, items.name) == 0)
             {
                 cout << "list the people allocated to { ";
                 for (int i = 0; i < items.people_count; i++)
                 {
-                    cout << items.Allocated_to[i] <<endl;
+                    cout << items.Allocated_to[i] << endl;
                 }
                 cout << "}." << endl;
 
@@ -425,10 +409,10 @@ void Retrieve(fstream &filex, char filename[])
     int num;
     char Name[20];
     InventoryItem items;
-     char name[20];
+    char name[20];
     cout << "\nEnter the name of the item ";
     cin.getline(name, 20);
-    
+
     // cout << "\nEnter the item ID to return ";
     // cin >> num;
     // cin.ignore();
@@ -511,7 +495,7 @@ void View_Members(fstream &filex, char filename[])
             {
                 if (strlen(items.Allocated_to[i]) > 1)
                 {
-                    cout <<"\t"<<items.Allocated_to[i] << endl;
+                    cout << "\t" << items.Allocated_to[i] << endl;
                 }
             }
 
