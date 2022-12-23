@@ -94,6 +94,7 @@ int main()
                 Retrieve(file, file_name);
                 cout << "Do you want to retrieve again?";
                 cin.get(again);
+                cin.ignore();
             } while (again == 'y' || again == 'Y');
             Retrieve(file, file_name);
         }
