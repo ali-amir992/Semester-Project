@@ -1,4 +1,6 @@
-# Semester-Project : Making an Inventory management system. The main job of this project is maintain the records of inventory items of FCIT.
+# Semester-Project :
+
+Making an Inventory management system. The main job of this project is maintain the records of inventory items of FCIT.
 The project is divided into 8 modules:
 
 1- To add items in the Inventory: i have made a structure that contains all the instances of an item. So as the user want to add an item, this program stores that record in a structure and then add its to data file.
